@@ -13,7 +13,7 @@ void fragment() {
 	// outside of everything, no balls
 	// set alpha to 0.0 to set a sharp outer edge
 	if(average < 0.2) {
-		alpha = 0.5;
+		alpha = 0.0;
 	}
 	// outer edges of balls, where there's very little pixels
 	// alpha is 1.0 by default, we can adjust the color here
