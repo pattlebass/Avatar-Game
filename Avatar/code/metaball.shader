@@ -19,7 +19,7 @@ void fragment() {
 	// alpha is 1.0 by default, we can adjust the color here
 	// color starts at full white (r/g/b = 1.0), so we can reduce channels to get color
 	if(average > 0.2 && average < 0.4) {
-		color = vec4(0.3, 0.6, 0.8, 0);
+		color = vec4(0.3, 0.6, 0.8, 0.0);
 	}
 	// center of balls, most coverage of pixels
 	// alpha is 1.0 by default, we can adjust the color here
