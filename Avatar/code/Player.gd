@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 # Movement
 var run_speed = 250
-var jump_speed = 850
+var jump_speed = 550
 var gravity = 1200
 
 var velocity = Vector2()
@@ -64,6 +64,12 @@ func get_bending_input():
 				fire_particle.global_position = global_position
 				fire_particle.apply_central_impulse(direction*1000)
 				main.add_child(fire_particle)
+				
+		elif Input.is_action_pressed("ability2"):
+			var lightning = preload("res://scenes/Lightning.tscn").instance()
+			if Input.is_action_just_pressed("left_click"):
+				lightning.global_position = position
+				main.add_child(lightning)
 				
 	elif current_element == "air":
 		pass

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/fire/gradient.tres" type="Gradient" id=1]
+[ext_resource path="res://assets/fire/gradient2.tres" type="Gradient" id=1]
 [ext_resource path="res://assets/fire/Smoke30Frames_0.png" type="Texture" id=2]
 [ext_resource path="res://code/FireParticle.gd" type="Script" id=3]
 
@@ -56,10 +56,13 @@ gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Particles2D" type="Particles2D" parent="."]
 material = SubResource( 1 )
-amount = 100
+amount = 200
 lifetime = 0.5
 randomness = 1.0
 local_coords = false
@@ -70,6 +73,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 6 )
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
+wait_time = 0.5
+autostart = true
 [connection signal="body_entered" from="." to="." method="_on_FireParticle_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

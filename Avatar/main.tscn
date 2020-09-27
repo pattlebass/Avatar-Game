@@ -45,6 +45,7 @@ scale = Vector2( 0.504072, 0.40191 )
 texture = ExtResource( 6 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.392157 )
 material = SubResource( 1 )
 margin_right = 1030.0
 margin_bottom = 602.0
