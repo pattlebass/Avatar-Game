@@ -36,7 +36,7 @@ void fragment(){
 	
 	// Add lightning
 	for ( int i = 0; i < lightning_number; i++){
-		vec2 t = uv * vec2(2.0,1.0) + vec2(float(i), -float(i)) - TIME*4.0;
+		vec2 t = uv * vec2(2.0,1.0) + vec2(float(i), -float(i)) - TIME*6.0;
 		float y = fbm(t)*0.5;
 		float pct = plot(uv, y, 0.03);
 		float buffer = plot(uv, y, 0.08);

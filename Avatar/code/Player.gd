@@ -12,7 +12,7 @@ var jumping = false
 onready var main = get_parent()
 
 var bending_abilities = {
-	"firebending":{"level":5, "color":Global.fire_colors.blue, "lightning_level":3},
+	"firebending":{"level":5, "color":"blue", "lightning_level":3},
 	"airbending":{"level":5, "flight_level":3},
 	"waterbending":{"level":5, "bloodbending_level":3,"healing_level":3},
 	"earthbending":{"level":5, "metalbending_level":3, "lavabending_level":3},
@@ -33,6 +33,7 @@ var current_element = "water"
 
 
 func _ready():
+	randomize()
 	print(stats)
 
 
@@ -57,12 +58,36 @@ func get_bending_input():
 			var fire_particle = preload("res://scenes/FireParticle.tscn").instance()
 			var direction = (get_global_mouse_position() - global_position).normalized()
 			if Input.is_action_pressed("left_click"):
-				fire_particle.global_position = global_position
+				var offset_no = 10
+				var offset = Vector2(rand_range(-offset_no, offset_no), rand_range(-offset_no, offset_no))
+				fire_particle.global_position = global_position + offset
 				fire_particle.apply_central_impulse(direction*1000)
+				
+				var particle_material = fire_particle.get_node("Particles2D").process_material
+				var gradient
+				
+				if stats.bending_abilities.firebending.color == "red":
+					gradient = preload("res://assets/fire/gradient_red.tres")
+				else:
+					gradient = preload("res://assets/fire/gradient_blue.tres")
+				
+				particle_material.color_ramp.gradient = gradient
+				
 				main.add_child(fire_particle)
 			elif Input.is_action_just_pressed("right_click"):
 				fire_particle.global_position = global_position
 				fire_particle.apply_central_impulse(direction*1000)
+				
+				var particle_material = fire_particle.get_node("Particles2D").process_material
+				var gradient
+				
+				if stats.bending_abilities.firebending.color == "red":
+					gradient = preload("res://assets/fire/gradient_red_ball.tres")
+				else:
+					gradient = preload("res://assets/fire/gradient_blue_ball.tres")
+				
+				particle_material.color_ramp.gradient = gradient
+				
 				main.add_child(fire_particle)
 				
 		elif Input.is_action_pressed("ability2"):

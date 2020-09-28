@@ -13,7 +13,7 @@ func _process(_delta):
 	$GridContainer/Energy.text = "Energy: %s / %s" % [player.stats.current_energy, player.stats.max_energy]
 	
 	# Other
-	if Input.is_action_just_pressed("right_click"):
+	if Input.is_action_just_pressed("right_click") and player.current_element == "water":
 		var water_drop = preload("res://scenes/WaterDrop.tscn").instance()
 		water_drop.global_position = get_global_mouse_position()
 		main.get_node("water").add_child(water_drop)

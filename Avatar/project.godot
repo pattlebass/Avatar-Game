@@ -81,6 +81,10 @@ ability4={
  ]
 }
 
+[physics]
+
+2d/default_gravity=150
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
