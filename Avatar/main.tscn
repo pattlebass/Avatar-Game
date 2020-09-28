@@ -117,37 +117,39 @@ script = ExtResource( 8 )
 [node name="GridContainer" type="GridContainer" parent="UI/Debug"]
 margin_right = 1023.0
 margin_bottom = 86.0
+custom_constants/hseparation = 30
+columns = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FPS" type="Label" parent="UI/Debug/GridContainer"]
-margin_right = 115.0
+margin_right = 54.0
 margin_bottom = 14.0
 text = "FPS: 000"
 
 [node name="Health" type="Label" parent="UI/Debug/GridContainer"]
-margin_top = 18.0
-margin_right = 115.0
-margin_bottom = 32.0
+margin_left = 84.0
+margin_right = 158.0
+margin_bottom = 14.0
 text = "Health: 100"
 
 [node name="Energy" type="Label" parent="UI/Debug/GridContainer"]
-margin_top = 36.0
-margin_right = 115.0
-margin_bottom = 50.0
+margin_left = 188.0
+margin_right = 262.0
+margin_bottom = 14.0
 text = "Energy: 100"
 
 [node name="Element" type="Label" parent="UI/Debug/GridContainer"]
-margin_top = 54.0
-margin_right = 115.0
-margin_bottom = 68.0
+margin_left = 292.0
+margin_right = 407.0
+margin_bottom = 14.0
 text = "Element: element"
 
 [node name="IsAvatar" type="Label" parent="UI/Debug/GridContainer"]
-margin_top = 72.0
-margin_right = 115.0
-margin_bottom = 86.0
+margin_left = 437.0
+margin_right = 527.0
+margin_bottom = 14.0
 text = "Is Avatar: true"
 
 [node name="PopupElementsWheel" type="PopupDialog" parent="UI"]
