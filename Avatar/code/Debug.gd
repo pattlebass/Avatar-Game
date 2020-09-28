@@ -3,6 +3,7 @@ extends Control
 onready var main = get_parent().get_parent()
 onready var player = main.get_node("Player")
 
+
 func _process(_delta):
 	# Set Labels
 	$GridContainer/FPS.text = "FPS: %s" % Engine.get_frames_per_second()

@@ -93,7 +93,6 @@ texture = ExtResource( 3 )
 [node name="AbilityNodes" type="Node2D" parent="Player"]
 
 [node name="WaterArea2D" type="Area2D" parent="Player/AbilityNodes"]
-position = Vector2( 200, 0 )
 gravity_point = true
 gravity_distance_scale = 0.156
 gravity_vec = Vector2( 0, 0 )
@@ -101,6 +100,7 @@ gravity = 1024.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/AbilityNodes/WaterArea2D"]
 shape = SubResource( 4 )
+disabled = true
 
 [node name="UI" type="Control" parent="."]
 margin_right = 40.0
@@ -116,7 +116,7 @@ script = ExtResource( 8 )
 
 [node name="GridContainer" type="GridContainer" parent="UI/Debug"]
 margin_right = 1023.0
-margin_bottom = 61.0
+margin_bottom = 86.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
