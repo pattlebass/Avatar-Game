@@ -1,0 +1,127 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/PopupElementsWheel.gd" type="Script" id=1]
+[ext_resource path="res://ui/Debug.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0.219608 )
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Debug" type="Control" parent="."]
+margin_right = 1022.0
+margin_bottom = 63.0
+script = ExtResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="Debug"]
+margin_right = 1023.0
+margin_bottom = 86.0
+custom_constants/hseparation = 30
+columns = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="Button" parent="Debug/GridContainer"]
+margin_right = 66.0
+margin_bottom = 20.0
+text = "FPS: 000"
+
+[node name="Health" type="Button" parent="Debug/GridContainer"]
+margin_left = 96.0
+margin_right = 182.0
+margin_bottom = 20.0
+text = "Health: 100"
+
+[node name="Energy" type="Button" parent="Debug/GridContainer"]
+margin_left = 212.0
+margin_right = 298.0
+margin_bottom = 20.0
+text = "Energy: 100"
+
+[node name="Element" type="Button" parent="Debug/GridContainer"]
+margin_left = 328.0
+margin_right = 455.0
+margin_bottom = 20.0
+text = "Element: element"
+
+[node name="IsAvatar" type="Button" parent="Debug/GridContainer"]
+margin_left = 485.0
+margin_right = 587.0
+margin_bottom = 20.0
+text = "Is Avatar: true"
+
+[node name="PopupElementsWheel" type="PopupDialog" parent="."]
+margin_left = 383.252
+margin_top = 165.463
+margin_right = 633.252
+margin_bottom = 415.463
+custom_styles/panel = SubResource( 1 )
+popup_exclusive = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WaterLabel" type="Label" parent="PopupElementsWheel"]
+margin_left = 82.1532
+margin_top = 167.6
+margin_right = 165.153
+margin_bottom = 250.6
+mouse_filter = 1
+text = "Water"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FireLabel" type="Label" parent="PopupElementsWheel"]
+margin_left = 0.132439
+margin_top = 83.9615
+margin_right = 83.1324
+margin_bottom = 166.962
+mouse_filter = 1
+text = "Fire"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="EarthLabel" type="Label" parent="PopupElementsWheel"]
+margin_left = 83.0441
+margin_top = 0.970352
+margin_right = 166.044
+margin_bottom = 83.9704
+mouse_filter = 1
+text = "Earth"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="AirLabel" type="Label" parent="PopupElementsWheel"]
+margin_left = 167.579
+margin_top = 84.407
+margin_right = 250.579
+margin_bottom = 167.407
+mouse_filter = 1
+text = "Air"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+[connection signal="mouse_entered" from="PopupElementsWheel/WaterLabel" to="PopupElementsWheel" method="_on_WaterLabel_mouse_entered"]
+[connection signal="mouse_entered" from="PopupElementsWheel/FireLabel" to="PopupElementsWheel" method="_on_FireLabel_mouse_entered"]
+[connection signal="mouse_entered" from="PopupElementsWheel/EarthLabel" to="PopupElementsWheel" method="_on_EarthLabel_mouse_entered"]
+[connection signal="mouse_entered" from="PopupElementsWheel/AirLabel" to="PopupElementsWheel" method="_on_AirLabel_mouse_entered"]

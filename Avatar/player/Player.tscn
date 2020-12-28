@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player/Player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://player/BendingLogic.gd" type="Script" id=3]
+[ext_resource path="res://player/StateMachine.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30.767, 68.4465 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 100.0
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 471.826, 477.768 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StateMachine" type="Node2D" parent="."]
+position = Vector2( -471.826, -477.768 )
+script = ExtResource( 4 )
+
+[node name="BendingLogic" type="Node2D" parent="."]
+position = Vector2( -471.826, -477.768 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1, 2.15538 )
+texture = ExtResource( 2 )
+
+[node name="AbilityNodes" type="Node2D" parent="."]
+
+[node name="WaterArea2D" type="Area2D" parent="AbilityNodes"]
+gravity_point = true
+gravity_distance_scale = 0.156
+gravity_vec = Vector2( 0, 0 )
+gravity = 1024.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AbilityNodes/WaterArea2D"]
+shape = SubResource( 2 )
+disabled = true
+[connection signal="body_entered" from="AbilityNodes/WaterArea2D" to="BendingLogic" method="_on_WaterArea2D_body_entered"]
+[connection signal="body_exited" from="AbilityNodes/WaterArea2D" to="BendingLogic" method="_on_WaterArea2D_body_exited"]

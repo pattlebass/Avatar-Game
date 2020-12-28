@@ -1,8 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/fire/gradient_red_ball.tres" type="Gradient" id=1]
-[ext_resource path="res://assets/fire/Smoke30Frames_0.png" type="Texture" id=2]
-[ext_resource path="res://code/FireParticle.gd" type="Script" id=3]
+[ext_resource path="res://elements/fire/FireParticle.gd" type="Script" id=1]
+[ext_resource path="res://elements/fire/assets/gradient_red_ball.tres" type="Gradient" id=2]
+[ext_resource path="res://elements/fire/assets/Smoke30Frames_0.png" type="Texture" id=3]
+
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -13,7 +14,7 @@ particles_anim_v_frames = 5
 particles_anim_loop = true
 
 [sub_resource type="GradientTexture" id=2]
-gradient = ExtResource( 1 )
+gradient = ExtResource( 2 )
 
 [sub_resource type="Curve" id=3]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.125 ), 0.0, 0.0, 0, 0 ]
@@ -55,7 +56,7 @@ collision_mask = 2
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
-script = ExtResource( 3 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -67,7 +68,7 @@ lifetime = 0.5
 randomness = 1.0
 local_coords = false
 process_material = SubResource( 5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 6 )
