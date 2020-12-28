@@ -16,6 +16,9 @@ corner_radius_bottom_left = 120
 margin_right = 1022.0
 margin_bottom = 63.0
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer" type="GridContainer" parent="Debug"]
 margin_right = 1023.0
@@ -26,34 +29,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FPS" type="Button" parent="Debug/GridContainer"]
-margin_right = 66.0
-margin_bottom = 20.0
+[node name="FPS" type="Label" parent="Debug/GridContainer"]
+margin_top = 3.0
+margin_right = 54.0
+margin_bottom = 17.0
 text = "FPS: 000"
 
 [node name="Health" type="Button" parent="Debug/GridContainer"]
-margin_left = 96.0
-margin_right = 182.0
+margin_left = 84.0
+margin_right = 170.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Health: 100"
 
 [node name="Energy" type="Button" parent="Debug/GridContainer"]
-margin_left = 212.0
-margin_right = 298.0
+margin_left = 200.0
+margin_right = 286.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Energy: 100"
 
 [node name="Element" type="Button" parent="Debug/GridContainer"]
-margin_left = 328.0
-margin_right = 455.0
+margin_left = 316.0
+margin_right = 443.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Element: element"
 
 [node name="IsAvatar" type="Button" parent="Debug/GridContainer"]
-margin_left = 485.0
-margin_right = 587.0
+margin_left = 473.0
+margin_right = 575.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Is Avatar: true"
+
+[node name="FireColor" type="Button" parent="Debug/GridContainer"]
+margin_left = 605.0
+margin_right = 714.0
+margin_bottom = 20.0
+text = "Fire Color: blue"
 
 [node name="PopupElementsWheel" type="PopupDialog" parent="."]
 margin_left = 383.252
@@ -63,9 +77,6 @@ margin_bottom = 415.463
 custom_styles/panel = SubResource( 1 )
 popup_exclusive = true
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="WaterLabel" type="Label" parent="PopupElementsWheel"]
 margin_left = 82.1532
@@ -121,6 +132,9 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
+[connection signal="pressed" from="Debug/GridContainer/Element" to="Debug" method="_on_Element_pressed"]
+[connection signal="pressed" from="Debug/GridContainer/IsAvatar" to="Debug" method="_on_IsAvatar_pressed"]
+[connection signal="pressed" from="Debug/GridContainer/FireColor" to="Debug" method="_on_FireColor_pressed"]
 [connection signal="mouse_entered" from="PopupElementsWheel/WaterLabel" to="PopupElementsWheel" method="_on_WaterLabel_mouse_entered"]
 [connection signal="mouse_entered" from="PopupElementsWheel/FireLabel" to="PopupElementsWheel" method="_on_FireLabel_mouse_entered"]
 [connection signal="mouse_entered" from="PopupElementsWheel/EarthLabel" to="PopupElementsWheel" method="_on_EarthLabel_mouse_entered"]
