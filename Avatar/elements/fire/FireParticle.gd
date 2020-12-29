@@ -18,3 +18,7 @@ func _on_FireParticle_body_entered(_body):
 
 func _on_Timer_timeout():
 	set_physics_process(true)
+
+
+func _on_Timer2_timeout():
+	queue_free()
