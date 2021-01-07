@@ -3,6 +3,9 @@ extends Node2D
 onready var player = get_parent()
 onready var main = player.get_parent()
 
+onready var water_area = player.get_node("AbilityNodes/WaterArea2D")
+
+
 func _process(delta):
 	var current_element = get_parent().current_element
 	
@@ -43,46 +46,45 @@ func _process(delta):
 				main.add_child(lightning)
 		
 		["water", "ability1"]:
-			var water_area = player.get_node("AbilityNodes/WaterArea2D")
 			water_area.global_position = get_global_mouse_position()
 			if Input.is_action_pressed("left_click"):
 				water_area.get_node("CollisionShape2D").disabled = false
 				var radius = player.stats.bending_abilities.waterbending.level * 20
 				#water_area.get_node("CollisionShape2D").shape.radius = radius
+				for water_drop in get_tree().get_nodes_in_group("water_in_area"):
+					water_drop.sleeping = false
+					water_drop.force = player.stats.bending_abilities.waterbending.level
+					water_drop.destination_area = player.get_node("AbilityNodes/WaterArea2D")
 			elif Input.is_action_pressed("right_click"):
 				water_area.get_node("CollisionShape2D").disabled = false
-				for i in water_area.get_overlapping_bodies():
-					if i.is_in_group("water_drop"):
-						i.frozen = true
+				for i in get_tree().get_nodes_in_group("water_in_area"):
+					i.frozen = true
 			else:
 				water_area.get_node("CollisionShape2D").disabled = true
 		["water", "ability2"]:
-			var water_area = player.get_node("AbilityNodes/WaterArea2D")
 			water_area.global_position = get_global_mouse_position()
-			var water_drops = []
 			if Input.is_action_just_pressed("left_click"):
 				water_area.get_node("CollisionShape2D").disabled = false
-				for i in water_area.get_overlapping_bodies():
-					if i.is_in_group("water_drop"):
-						water_drops.append(i)
-			
-			if Input.is_action_just_released("left_click"):
+			if Input.is_action_pressed("left_click"):
 				var ice_spike_scene = preload("res://elements/water/IceSpike.tscn")
-				#print(water_drops.size())
-				for i in water_drops:
+				for water_drop in get_tree().get_nodes_in_group("water_in_area"):
 					var ice_spike = ice_spike_scene.instance()
-					ice_spike.target = get_global_mouse_position()
-					ice_spike.global_position = i.global_position
+					ice_spike.global_position = water_drop.global_position
+					ice_spike.add_to_group("ice_spikes_selected")
 					main.add_child(ice_spike)
-					i.queue_free()
+					water_drop.queue_free()
+			if Input.is_action_just_released("left_click"):
+				for icespike in get_tree().get_nodes_in_group("ice_spikes_selected"):
+					icespike.shoot(get_global_mouse_position())
+					icespike.remove_from_group("ice_spikes_selected")
 
 
 func _on_WaterArea2D_body_entered(body):
 	if body.is_in_group("water_drop"):
-		body.sleeping = false
-		body.force = player.stats.bending_abilities.waterbending.level
-		body.destination_area = player.get_node("AbilityNodes/WaterArea2D")
+		body.add_to_group("water_in_area")
+
 
 func _on_WaterArea2D_body_exited(body):
 	if body.is_in_group("water_drop"):
+		body.remove_from_group("water_in_area")
 		body.destination_area = null

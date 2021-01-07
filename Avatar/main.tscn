@@ -22,18 +22,18 @@ script = ExtResource( 2 )
 [node name="water" type="Node2D" parent="."]
 
 [node name="WaterDrop" parent="water" instance=ExtResource( 8 )]
-position = Vector2( 605, 156.47 )
+position = Vector2( 605, 300 )
 
 [node name="WaterDrop2" parent="water" instance=ExtResource( 8 )]
-position = Vector2( 605, 186.66 )
+position = Vector2( 605, 284.734 )
 
 [node name="icon" type="Sprite" parent="."]
-position = Vector2( 331.237, 141.769 )
+position = Vector2( 331.237, 250 )
 scale = Vector2( 0.491163, 0.246911 )
 texture = ExtResource( 6 )
 
 [node name="icon2" type="Sprite" parent="."]
-position = Vector2( 294.728, 143.609 )
+position = Vector2( 294.728, 250 )
 scale = Vector2( 0.504072, 0.40191 )
 texture = ExtResource( 6 )
 
@@ -69,5 +69,9 @@ position = Vector2( 685.547, -106.908 )
 polygon = PoolVector2Array( -94.3068, -6.84305, -52.4346, 74.6742, 54.9187, 75.1196, 101.691, -4.17035, 87.882, -4.61581, 50.9097, 60.8652, -45.7528, 60.4198, -84.0615, -9.96118 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+smoothing_enabled = true
 
 [node name="UI" parent="." instance=ExtResource( 7 )]

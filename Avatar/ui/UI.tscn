@@ -67,6 +67,7 @@ text = "Is Avatar: true"
 margin_left = 605.0
 margin_right = 714.0
 margin_bottom = 20.0
+focus_mode = 0
 text = "Fire Color: blue"
 
 [node name="PopupElementsWheel" type="PopupDialog" parent="."]
