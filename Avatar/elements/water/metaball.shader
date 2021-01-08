@@ -25,7 +25,7 @@ void fragment() {
 	// alpha is 1.0 by default, we can adjust the color here
 	// color starts at full white (r/g/b = 1.0), so we can reduce channels to get color
 	if(average > 0.4) {
-		color = vec4(0.2, 0.8, 1.0, 1.0)
+		color = vec4(0.2, 0.8, 1.0, 1.0);
 	}
 	COLOR = color; //vec4(color, alpha);
 }

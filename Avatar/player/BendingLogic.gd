@@ -5,6 +5,7 @@ onready var main = player.get_parent()
 
 onready var water_area = player.get_node("AbilityNodes/WaterArea2D")
 
+var line
 
 func _process(delta):
 	var current_element = get_parent().current_element
@@ -65,6 +66,7 @@ func _process(delta):
 			water_area.global_position = get_global_mouse_position()
 			if Input.is_action_just_pressed("left_click"):
 				water_area.get_node("CollisionShape2D").disabled = false
+
 			if Input.is_action_pressed("left_click"):
 				var ice_spike_scene = preload("res://elements/water/IceSpike.tscn")
 				for water_drop in get_tree().get_nodes_in_group("water_in_area"):
@@ -73,10 +75,16 @@ func _process(delta):
 					ice_spike.add_to_group("ice_spikes_selected")
 					main.add_child(ice_spike)
 					water_drop.queue_free()
+				if not line and not get_tree().get_nodes_in_group("ice_spikes_selected").empty():
+					line = preload("res://elements/water/IceSpikeLine.tscn").instance()
+					line.global_position = get_global_mouse_position()
+					main.add_child(line)
 			if Input.is_action_just_released("left_click"):
 				for icespike in get_tree().get_nodes_in_group("ice_spikes_selected"):
 					icespike.shoot(get_global_mouse_position())
 					icespike.remove_from_group("ice_spikes_selected")
+				if line:
+					line.queue_free()
 
 
 func _on_WaterArea2D_body_entered(body):

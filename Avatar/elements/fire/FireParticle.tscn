@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://elements/fire/FireParticle.gd" type="Script" id=1]
-[ext_resource path="res://elements/fire/assets/gradient_red_ball.tres" type="Gradient" id=2]
+[ext_resource path="res://elements/fire/FireParticle.tres" type="Material" id=2]
 [ext_resource path="res://elements/fire/assets/Smoke30Frames_0.png" type="Texture" id=3]
 
 [sub_resource type="CanvasItemMaterial" id=1]
@@ -12,41 +12,7 @@ particles_anim_h_frames = 6
 particles_anim_v_frames = 5
 particles_anim_loop = true
 
-[sub_resource type="GradientTexture" id=2]
-gradient = ExtResource( 2 )
-
-[sub_resource type="Curve" id=3]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.125 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
-
-[sub_resource type="ParticlesMaterial" id=5]
-trail_divisor = 6
-emission_shape = 1
-emission_sphere_radius = 0.4
-flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
-spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity_random = 0.1
-angular_velocity = 40.0
-angular_velocity_random = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 4.0
-linear_accel_random = 1.0
-angle = 360.0
-angle_random = 1.0
-scale = 1.5
-scale_random = 0.8
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
-anim_speed = 1.0
-anim_offset = 1.0
-anim_offset_random = 1.0
-
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=2]
 radius = 5.0
 
 [node name="FireParticle" type="RigidBody2D"]
@@ -66,11 +32,11 @@ amount = 200
 lifetime = 0.5
 randomness = 1.0
 local_coords = false
-process_material = SubResource( 5 )
+process_material = ExtResource( 2 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
